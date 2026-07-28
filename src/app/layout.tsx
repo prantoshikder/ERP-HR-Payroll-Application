@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 
 import { AppProviders } from "@/components/providers/app-providers";
+import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -18,12 +19,16 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: {
-    default: "NexusHR — ERP HR & Payroll Platform",
-    template: "%s · NexusHR",
+    default: siteConfig.title,
+    template: `%s · ${siteConfig.name}`,
   },
-  description:
-    "Run payroll, attendance, leave, recruitment and compliance for your whole workforce from one ERP. Built for teams from 20 to 20,000.",
+  description: siteConfig.description,
+  applicationName: siteConfig.name,
+  authors: [{ name: siteConfig.author.name, url: siteConfig.author.url }],
+  creator: siteConfig.author.name,
+  publisher: siteConfig.author.name,
   keywords: [
     "HR software",
     "payroll software",
@@ -32,11 +37,26 @@ export const metadata: Metadata = {
     "leave management",
     "HRMS",
   ],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "NexusHR — ERP HR & Payroll Platform",
+    title: siteConfig.title,
     description:
       "One platform for payroll, people and compliance. Close payroll in minutes, not weekends.",
+    url: siteConfig.url,
+    siteName: siteConfig.name,
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.title,
+    description:
+      "One platform for payroll, people and compliance. Close payroll in minutes, not weekends.",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

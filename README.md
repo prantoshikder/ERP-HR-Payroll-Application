@@ -14,11 +14,14 @@ Marketing site + application shell for an ERP HR & Payroll product.
 
 ## Getting started
 
+This project uses **yarn** (`yarn.lock` is the committed lockfile).
+
 ```bash
-npm install
-npm run dev      # http://localhost:3000
-npm run build    # production build
-npm run lint     # eslint
+yarn install
+yarn dev         # http://localhost:3000
+yarn build       # production build
+yarn lint        # eslint
+yarn typecheck   # tsc --noEmit
 ```
 
 ## Structure
@@ -63,4 +66,23 @@ Color scales: `brand-*` (indigo), `mint-*` (green), `ink-*` (slate).
 `src/components/ui/reveal.tsx` exports `Reveal`, `RevealGroup` and the `fadeUp` /
 `fadeIn` variants. Sections use `whileInView` with `once: true`. Global
 `prefers-reduced-motion` handling lives in `globals.css`.
-# ERP-HR-Payroll-Application
+
+## SEO & metadata
+
+Site identity lives in one place: `src/lib/site.ts`. It feeds the root
+`metadata` export, `robots.ts`, `sitemap.ts` and the footer credit.
+
+Set `NEXT_PUBLIC_SITE_URL` before deploying (see `.env.example`) — it becomes
+`metadataBase`, the canonical URL, the sitemap host and the `robots.txt`
+sitemap entry. Without it everything falls back to `http://localhost:3000`.
+
+File-convention assets: `src/app/icon.svg` (favicon) and
+`src/app/opengraph-image.tsx` (generated 1200×630 OG image).
+
+## Author
+
+**Pranto Shikder** — [github.com/prantoshikder](https://github.com/prantoshikder)
+
+## License
+
+[MIT](./LICENSE)

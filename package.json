@@ -2,11 +2,43 @@
   "name": "erp-hr-payroll",
   "version": "0.1.0",
   "private": true,
+  "description": "NexusHR — an ERP HR & Payroll platform covering core HR, payroll, attendance, leave, recruitment, performance and compliance.",
+  "author": {
+    "name": "Pranto Shikder",
+    "email": "prantoshikder24@gmail.com",
+    "url": "https://github.com/prantoshikder"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/prantoshikder/ERP-HR-Payroll-Application#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prantoshikder/ERP-HR-Payroll-Application.git"
+  },
+  "bugs": {
+    "url": "https://github.com/prantoshikder/ERP-HR-Payroll-Application/issues"
+  },
+  "keywords": [
+    "erp",
+    "hrms",
+    "hr-software",
+    "payroll",
+    "attendance",
+    "leave-management",
+    "nextjs",
+    "typescript",
+    "ant-design",
+    "tailwindcss"
+  ],
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "packageManager": "yarn@1.22.22",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@ant-design/icons": "^6.3.2",

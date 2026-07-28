@@ -1,3 +1,4 @@
+import { siteConfig } from "@/lib/site";
 import { Logo } from "./logo";
 
 const columns = [
@@ -57,7 +58,16 @@ export function Footer() {
 
         <div className="border-ink-100 mt-12 flex flex-col items-center justify-between gap-4 border-t pt-7 sm:flex-row">
           <p className="text-ink-400 text-xs">
-            © {new Date().getFullYear()} NexusHR. All rights reserved.
+            © {new Date().getFullYear()} {siteConfig.name}. Built by{" "}
+            <a
+              href={siteConfig.author.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-ink-600 hover:text-brand-600 font-medium transition-colors"
+            >
+              {siteConfig.author.name}
+            </a>
+            .
           </p>
           <div className="text-ink-400 flex items-center gap-5 text-xs">
             <span className="flex items-center gap-1.5">
