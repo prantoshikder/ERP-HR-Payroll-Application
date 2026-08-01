@@ -1,11 +1,53 @@
 export type NavLink = { label: string; href: string };
 
 export const navLinks: NavLink[] = [
-  { label: "Product", href: "#features" },
-  { label: "Modules", href: "#modules" },
-  { label: "How it works", href: "#how-it-works" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Features", href: "/features" },
+  { label: "Modules", href: "/modules" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Security", href: "/security" },
+  { label: "About", href: "/about" },
+];
+
+export type FooterColumn = {
+  title: string;
+  links: (NavLink & { external?: boolean })[];
+};
+
+export const footerColumns: FooterColumn[] = [
+  {
+    title: "Product",
+    links: [
+      { label: "Features", href: "/features" },
+      { label: "Modules", href: "/modules" },
+      { label: "Pricing", href: "/pricing" },
+      { label: "Security", href: "/security" },
+      { label: "How it works", href: "/#how-it-works" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { label: "About", href: "/about" },
+      { label: "Careers", href: "/careers" },
+      { label: "Customers", href: "/#testimonials" },
+      { label: "Contact", href: "/contact" },
+    ],
+  },
+  {
+    title: "Resources",
+    links: [
+      { label: "FAQ", href: "/pricing#faq" },
+      { label: "Book a demo", href: "/contact" },
+    ],
+  },
+  {
+    title: "Legal",
+    links: [
+      { label: "Privacy", href: "/privacy" },
+      { label: "Terms", href: "/terms" },
+      { label: "Security & compliance", href: "/security" },
+    ],
+  },
 ];
 
 export type Feature = {
@@ -74,18 +116,50 @@ export type Module = {
 };
 
 export const modules: Module[] = [
-  { name: "Core HR", blurb: "Single employee record of truth", tag: "Foundation" },
-  { name: "Payroll", blurb: "Run, review, disburse, reconcile", tag: "Finance" },
-  { name: "Time & Attendance", blurb: "Punches, shifts, timesheets", tag: "Operations" },
+  {
+    name: "Core HR",
+    blurb: "Single employee record of truth",
+    tag: "Foundation",
+  },
+  {
+    name: "Payroll",
+    blurb: "Run, review, disburse, reconcile",
+    tag: "Finance",
+  },
+  {
+    name: "Time & Attendance",
+    blurb: "Punches, shifts, timesheets",
+    tag: "Operations",
+  },
   { name: "Leave", blurb: "Policies, accruals, approvals", tag: "Operations" },
   { name: "Recruitment", blurb: "Requisition to offer letter", tag: "Talent" },
   { name: "Onboarding", blurb: "Checklists and asset handover", tag: "Talent" },
   { name: "Performance", blurb: "Goals, OKRs and appraisals", tag: "Talent" },
-  { name: "Expense & Claims", blurb: "Reimbursements into payroll", tag: "Finance" },
-  { name: "Asset Register", blurb: "Devices issued and returned", tag: "Operations" },
-  { name: "Loans & Advances", blurb: "Auto-deducted instalments", tag: "Finance" },
-  { name: "Employee Self-Service", blurb: "Payslips, requests, documents", tag: "Foundation" },
-  { name: "Analytics", blurb: "Headcount, cost and attrition", tag: "Insights" },
+  {
+    name: "Expense & Claims",
+    blurb: "Reimbursements into payroll",
+    tag: "Finance",
+  },
+  {
+    name: "Asset Register",
+    blurb: "Devices issued and returned",
+    tag: "Operations",
+  },
+  {
+    name: "Loans & Advances",
+    blurb: "Auto-deducted instalments",
+    tag: "Finance",
+  },
+  {
+    name: "Employee Self-Service",
+    blurb: "Payslips, requests, documents",
+    tag: "Foundation",
+  },
+  {
+    name: "Analytics",
+    blurb: "Headcount, cost and attrition",
+    tag: "Insights",
+  },
 ];
 
 export type Step = {
@@ -215,9 +289,21 @@ export const testimonials: Testimonial[] = [
 export type Stat = { value: string; label: string; sub: string };
 
 export const stats: Stat[] = [
-  { value: "2.4M+", label: "Payslips issued", sub: "processed through NexusHR in 2025" },
-  { value: "40 min", label: "Average payroll run", sub: "down from 3 working days" },
-  { value: "99.98%", label: "Calculation accuracy", sub: "measured across audited runs" },
+  {
+    value: "2.4M+",
+    label: "Payslips issued",
+    sub: "processed through NexusHR in 2025",
+  },
+  {
+    value: "40 min",
+    label: "Average payroll run",
+    sub: "down from 3 working days",
+  },
+  {
+    value: "99.98%",
+    label: "Calculation accuracy",
+    sub: "measured across audited runs",
+  },
   { value: "1,200+", label: "Companies onboard", sub: "across 14 countries" },
 ];
 

@@ -1,24 +1,8 @@
+import Link from "next/link";
+
+import { footerColumns } from "@/data/landing";
 import { siteConfig } from "@/lib/site";
 import { Logo } from "./logo";
-
-const columns = [
-  {
-    title: "Product",
-    links: ["Core HR", "Payroll", "Attendance", "Leave", "Performance", "Analytics"],
-  },
-  {
-    title: "Company",
-    links: ["About", "Customers", "Careers", "Security", "Partners"],
-  },
-  {
-    title: "Resources",
-    links: ["Documentation", "API reference", "Payroll guides", "Changelog", "Status"],
-  },
-  {
-    title: "Legal",
-    links: ["Privacy", "Terms", "DPA", "Sub-processors"],
-  },
-];
 
 export function Footer() {
   return (
@@ -26,7 +10,9 @@ export function Footer() {
       <div className="shell py-14">
         <div className="grid gap-10 lg:grid-cols-[1.3fr_2.7fr]">
           <div>
-            <Logo />
+            <Link href="/" className="inline-block">
+              <Logo />
+            </Link>
             <p className="text-ink-500 mt-4 max-w-xs text-sm leading-relaxed">
               The ERP that connects people, attendance and money — so payroll
               closes on time, every time.
@@ -34,20 +20,31 @@ export function Footer() {
           </div>
 
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
-            {columns.map((col) => (
+            {footerColumns.map((col) => (
               <div key={col.title}>
                 <h3 className="text-ink-900 text-xs font-bold tracking-[0.12em] uppercase">
                   {col.title}
                 </h3>
                 <ul className="mt-4 space-y-2.5">
                   {col.links.map((link) => (
-                    <li key={link}>
-                      <a
-                        href="#"
-                        className="text-ink-500 hover:text-brand-600 text-sm transition-colors"
-                      >
-                        {link}
-                      </a>
+                    <li key={link.label}>
+                      {link.external ? (
+                        <a
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-ink-500 hover:text-brand-600 text-sm transition-colors"
+                        >
+                          {link.label}
+                        </a>
+                      ) : (
+                        <Link
+                          href={link.href}
+                          className="text-ink-500 hover:text-brand-600 text-sm transition-colors"
+                        >
+                          {link.label}
+                        </Link>
+                      )}
                     </li>
                   ))}
                 </ul>

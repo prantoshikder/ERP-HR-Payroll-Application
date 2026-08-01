@@ -1,16 +1,20 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Button, Drawer } from "antd";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Drawer } from "antd";
 import { CloseOutlined, MenuOutlined } from "@ant-design/icons";
 import { AnimatePresence, motion, useScroll, useMotionValueEvent } from "motion/react";
 
 import { navLinks } from "@/data/landing";
+import { RouteButton } from "@/components/ui/route-button";
 import { Logo } from "./logo";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -44,30 +48,39 @@ export function Navbar() {
             style={{ height: "var(--nav-h)" }}
             aria-label="Main"
           >
-            <a href="#top" className="shrink-0">
+            <Link href="/" className="shrink-0">
               <Logo />
-            </a>
+            </Link>
 
             <ul className="hidden items-center gap-1 lg:flex">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="text-ink-600 hover:text-ink-900 hover:bg-ink-100/70 rounded-lg px-3.5 py-2 text-sm font-medium transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
+              {navLinks.map((link) => {
+                const active = pathname === link.href;
+
+                return (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      aria-current={active ? "page" : undefined}
+                      className={`hover:bg-ink-100/70 rounded-lg px-3.5 py-2 text-sm font-medium transition-colors ${
+                        active
+                          ? "text-brand-700 bg-brand-50/70"
+                          : "text-ink-600 hover:text-ink-900"
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
 
             <div className="hidden items-center gap-2 lg:flex">
-              <Button type="text" href="#" className="font-semibold">
-                Sign in
-              </Button>
-              <Button type="primary" href="#pricing">
-                Book a demo
-              </Button>
+              <RouteButton type="text" href="/contact" className="font-semibold">
+                Contact sales
+              </RouteButton>
+              <RouteButton type="primary" href="/pricing">
+                Start free trial
+              </RouteButton>
             </div>
 
             <button
@@ -118,13 +131,16 @@ export function Navbar() {
                     show: { opacity: 1, x: 0 },
                   }}
                 >
-                  <a
+                  <Link
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className="text-ink-700 hover:bg-ink-100 block rounded-xl px-3 py-3 text-base font-medium"
+                    aria-current={pathname === link.href ? "page" : undefined}
+                    className={`hover:bg-ink-100 block rounded-xl px-3 py-3 text-base font-medium ${
+                      pathname === link.href ? "text-brand-700 bg-brand-50" : "text-ink-700"
+                    }`}
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </motion.li>
               ))}
             </motion.ul>
@@ -132,18 +148,23 @@ export function Navbar() {
         </AnimatePresence>
 
         <div className="mt-8 space-y-2">
-          <Button block size="large" onClick={() => setOpen(false)}>
-            Sign in
-          </Button>
-          <Button
+          <RouteButton
+            block
+            size="large"
+            href="/contact"
+            onClick={() => setOpen(false)}
+          >
+            Contact sales
+          </RouteButton>
+          <RouteButton
             block
             size="large"
             type="primary"
-            href="#pricing"
+            href="/pricing"
             onClick={() => setOpen(false)}
           >
-            Book a demo
-          </Button>
+            Start free trial
+          </RouteButton>
         </div>
       </Drawer>
     </>

@@ -1,32 +1,41 @@
 "use client";
 
-import { useState } from "react";
-import { Button, Segmented } from "antd";
 import { CheckOutlined } from "@ant-design/icons";
+import { Segmented } from "antd";
 import { motion } from "motion/react";
+import { useState } from "react";
 
-import { plans } from "@/data/landing";
-import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal, RevealGroup, fadeUp } from "@/components/ui/reveal";
+import { RouteButton } from "@/components/ui/route-button";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { plans } from "@/data/landing";
 
 type Cycle = "monthly" | "yearly";
 
-export function Pricing() {
+/** `heading={false}` on the pricing page, where the page hero already says this. */
+export function Pricing({ heading = true }: { heading?: boolean }) {
   const [cycle, setCycle] = useState<Cycle>("yearly");
 
   return (
     <section id="pricing" className="relative py-20 sm:py-28">
-      <div aria-hidden className="dot-grid mask-fade-b pointer-events-none absolute inset-0 -z-10 opacity-60" />
+      <div
+        aria-hidden
+        className="dot-grid mask-fade-b pointer-events-none absolute inset-0 -z-10 opacity-60"
+      />
 
       <div className="shell">
-        <SectionHeading
-          eyebrow="Pricing"
-          title="Priced per employee, not per module"
-          description="No implementation fee, no per-payslip charge, no surprise line item when you add a country. Cancel any time during the trial."
-        />
+        {heading ? (
+          <SectionHeading
+            eyebrow="Pricing"
+            title="Priced per employee, not per module"
+            description="No implementation fee, no per-payslip charge, no surprise line item when you add a country. Cancel any time during the trial."
+          />
+        ) : null}
 
         <Reveal delay={0.1}>
-          <div className="mt-9 flex flex-col items-center gap-2">
+          <div
+            className={`flex flex-col items-center gap-2 ${heading ? "mt-9" : ""}`}
+          >
             <Segmented<Cycle>
               size="large"
               value={cycle}
@@ -68,7 +77,7 @@ export function Pricing() {
                 <h3 className="font-display text-ink-900 text-xl font-bold">
                   {plan.name}
                 </h3>
-                <p className="text-ink-500 mt-1.5 min-h-[42px] text-sm">
+                <p className="text-ink-500 mt-1.5 min-h-10.5 text-sm">
                   {plan.tagline}
                 </p>
 
@@ -82,7 +91,9 @@ export function Pricing() {
                       <span className="font-display text-ink-900 text-4xl font-extrabold tabular-nums">
                         ${price}
                       </span>
-                      <span className="text-ink-400 text-sm font-medium">/ mo</span>
+                      <span className="text-ink-400 text-sm font-medium">
+                        / mo
+                      </span>
                     </p>
                   )}
                   <p className="text-ink-400 mt-1 text-xs">{plan.unit}</p>
@@ -90,7 +101,10 @@ export function Pricing() {
 
                 <ul className="mt-6 flex-1 space-y-3">
                   {plan.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-2.5 text-sm">
+                    <li
+                      key={feature}
+                      className="flex items-start gap-2.5 text-sm"
+                    >
                       <span
                         className={`mt-0.5 grid h-4 w-4 shrink-0 place-items-center rounded-full text-[9px] ${
                           plan.featured
@@ -105,14 +119,15 @@ export function Pricing() {
                   ))}
                 </ul>
 
-                <Button
+                <RouteButton
                   className="mt-8"
                   block
                   size="large"
+                  href="/contact"
                   type={plan.featured ? "primary" : "default"}
                 >
                   {plan.cta}
-                </Button>
+                </RouteButton>
               </motion.div>
             );
           })}

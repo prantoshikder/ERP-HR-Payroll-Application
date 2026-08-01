@@ -13,5 +13,16 @@ export const siteConfig = {
   repository: "https://github.com/prantoshikder/ERP-HR-Payroll-Application",
 } as const;
 
-/** Landing page anchors, also used to generate the sitemap. */
-export const sitePaths = ["/"] as const;
+/** Every public route, used to generate the sitemap. */
+export const sitePaths = [
+  "/",
+  "/features",
+  "/modules",
+  "/pricing",
+  "/security",
+  "/about",
+  "/careers",
+  "/contact",
+  "/privacy",
+  "/terms",
+] as const;

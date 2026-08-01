@@ -1,15 +1,15 @@
 "use client";
 
-import { motion } from "motion/react";
 import { StarFilled } from "@ant-design/icons";
+import { motion } from "motion/react";
 
-import { testimonials } from "@/data/landing";
-import { SectionHeading } from "@/components/ui/section-heading";
 import { RevealGroup, fadeUp } from "@/components/ui/reveal";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { testimonials } from "@/data/landing";
 
 export function Testimonials() {
   return (
-    <section className="bg-ink-50/60 py-20 sm:py-28">
+    <section id="testimonials" className="bg-ink-50/60 py-20 sm:py-28">
       <div className="shell">
         <SectionHeading
           eyebrow="Customers"
@@ -34,7 +34,7 @@ export function Testimonials() {
               </blockquote>
 
               <figcaption className="border-ink-100 mt-6 flex items-center gap-3 border-t pt-5">
-                <span className="from-brand-500 to-brand-700 grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br text-xs font-bold text-white">
+                <span className="from-brand-500 to-brand-700 grid h-10 w-10 place-items-center rounded-full bg-linear-to-br text-xs font-bold text-white">
                   {t.initials}
                 </span>
                 <div>

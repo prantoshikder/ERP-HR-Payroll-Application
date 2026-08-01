@@ -31,19 +31,36 @@ src/
   app/
     layout.tsx              root layout, fonts, metadata, providers
     globals.css             design tokens, custom utilities, antd overrides
-    page.tsx                landing page composition
+    (marketing)/            route group sharing Navbar + Footer
+      layout.tsx            marketing chrome
+      page.tsx              landing page composition
+      features/             feature deep-dives
+      modules/              modules by group + integrations
+      pricing/              plans + full comparison matrix + FAQ
+      security/             security practices, certifications, disclosure
+      about/                story, values, timeline, leadership
+      careers/              perks + open roles
+      contact/              enquiry form, channels, offices
+      privacy/  terms/      legal documents
   components/
     providers/
       app-providers.tsx     AntdRegistry + ConfigProvider + App
-    landing/                landing page sections
+    landing/                landing page sections (reused across pages)
+    marketing/              sub-page building blocks (page hero, matrix, forms)
     ui/
       reveal.tsx            scroll-reveal motion primitives
       section-heading.tsx   shared section header
   data/
-    landing.ts              all landing page copy and content
+    landing.ts              landing copy, nav and footer links
+    pages.ts                copy owned by individual sub-pages
   lib/
     antd-theme.ts           single source of truth for antd tokens
+    site.ts                 site identity + `sitePaths` (feeds the sitemap)
 ```
+
+Every route is statically prerendered. Adding a page means creating it under
+`src/app/(marketing)/` and adding its path to `sitePaths` in `src/lib/site.ts`
+so it appears in `sitemap.xml`.
 
 ## Styling conventions
 

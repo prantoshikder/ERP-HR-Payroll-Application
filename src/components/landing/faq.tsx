@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Collapse } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 
@@ -19,12 +20,12 @@ export function Faq() {
             description="Still unsure about something? Our solutions engineers answer within a business day."
           />
           <Reveal delay={0.15}>
-            <a
-              href="#pricing"
+            <Link
+              href="/contact"
               className="text-brand-600 hover:text-brand-700 mt-6 inline-flex text-sm font-semibold"
             >
               Talk to a specialist →
-            </a>
+            </Link>
           </Reveal>
         </div>
 

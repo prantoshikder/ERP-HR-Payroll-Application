@@ -1,9 +1,10 @@
 "use client";
 
-import { Button } from "antd";
 import { ArrowRightOutlined, PlayCircleOutlined } from "@ant-design/icons";
+import { Button } from "antd";
 import { motion } from "motion/react";
 
+import { RouteButton } from "@/components/ui/route-button";
 import { DashboardPreview } from "./dashboard-preview";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -20,12 +21,15 @@ const item = {
 
 export function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28">
+    <section
+      id="top"
+      className="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28"
+    >
       {/* background */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="grid-lines mask-fade-b absolute inset-0" />
         <div className="bg-brand-300/30 absolute -top-32 -left-24 h-96 w-96 rounded-full blur-[120px]" />
-        <div className="bg-mint-400/20 absolute -top-20 right-0 h-[26rem] w-[26rem] rounded-full blur-[130px]" />
+        <div className="bg-mint-400/20 absolute -top-20 right-0 h-104 w-104 rounded-full blur-[130px]" />
       </div>
 
       <div className="shell">
@@ -65,16 +69,20 @@ export function Hero() {
             variants={item}
             className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row"
           >
-            <Button
+            <RouteButton
               type="primary"
               size="large"
-              href="#pricing"
+              href="/pricing"
               icon={<ArrowRightOutlined />}
               iconPlacement="end"
             >
               Start 14-day free trial
-            </Button>
-            <Button size="large" href="#how-it-works" icon={<PlayCircleOutlined />}>
+            </RouteButton>
+            <Button
+              size="large"
+              href="#how-it-works"
+              icon={<PlayCircleOutlined />}
+            >
               See how it works
             </Button>
           </motion.div>
