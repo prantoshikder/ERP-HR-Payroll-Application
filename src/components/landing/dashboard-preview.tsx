@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { motion } from "motion/react";
 import {
   ArrowUpOutlined,
@@ -8,24 +9,15 @@ import {
   TeamOutlined,
 } from "@ant-design/icons";
 
-const bars = [
-  { month: "Feb", value: 52 },
-  { month: "Mar", value: 61 },
-  { month: "Apr", value: 48 },
-  { month: "May", value: 72 },
-  { month: "Jun", value: 66 },
-  { month: "Jul", value: 88 },
-  { month: "Aug", value: 79 },
-];
+import { dashboardPreview } from "@/data/landing";
+import { EASE } from "@/data/common";
 
-const payrollRows = [
-  { name: "Ayesha Karim", role: "Senior Engineer", net: "$4,820", status: "Paid" },
-  { name: "Rahul Sharma", role: "Account Manager", net: "$3,140", status: "Paid" },
-  { name: "Nadia Islam", role: "HR Specialist", net: "$2,760", status: "Review" },
-  { name: "Tanvir Ahmed", role: "Ops Lead", net: "$3,590", status: "Paid" },
-];
+const { url, stats, progress, bars, payrollRows, badge } = dashboardPreview;
 
-const EASE = [0.22, 1, 0.36, 1] as const;
+const statIcons: Record<string, ReactNode> = {
+  cost: <BankOutlined />,
+  headcount: <TeamOutlined />,
+};
 
 export function DashboardPreview() {
   return (
@@ -49,27 +41,23 @@ export function DashboardPreview() {
           <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
           <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
           <div className="text-ink-400 border-ink-200 mx-auto rounded-md border bg-white px-3 py-1 text-[11px]">
-            app.nexushr.com/payroll/august-2026
+            {url}
           </div>
         </div>
 
         <div className="grid gap-4 p-4 sm:p-5 lg:grid-cols-[1fr_1.35fr]">
           {/* left column */}
           <div className="space-y-4">
-            <StatCard
-              icon={<BankOutlined />}
-              label="August payroll"
-              value="$1,284,900"
-              delta="+4.2%"
-              delay={0.5}
-            />
-            <StatCard
-              icon={<TeamOutlined />}
-              label="Employees paid"
-              value="1,842"
-              delta="+38"
-              delay={0.6}
-            />
+            {stats.map((stat, i) => (
+              <StatCard
+                key={stat.key}
+                icon={statIcons[stat.key]}
+                label={stat.label}
+                value={stat.value}
+                delta={stat.delta}
+                delay={0.5 + i * 0.1}
+              />
+            ))}
 
             <motion.div
               initial={{ opacity: 0, y: 16 }}
@@ -81,27 +69,23 @@ export function DashboardPreview() {
                 Run progress
               </p>
               <div className="mt-3 space-y-2.5">
-                {[
-                  ["Timesheets locked", 100],
-                  ["Tax computed", 100],
-                  ["Approvals", 74],
-                ].map(([label, pct], i) => (
-                  <div key={label as string}>
+                {progress.map((item, i) => (
+                  <div key={item.label}>
                     <div className="text-ink-600 mb-1 flex justify-between text-xs">
-                      <span>{label}</span>
-                      <span className="tabular-nums">{pct}%</span>
+                      <span>{item.label}</span>
+                      <span className="tabular-nums">{item.pct}%</span>
                     </div>
                     <div className="bg-ink-100 h-1.5 overflow-hidden rounded-full">
                       <motion.div
                         initial={{ width: 0 }}
-                        animate={{ width: `${pct}%` }}
+                        animate={{ width: `${item.pct}%` }}
                         transition={{
                           duration: 1,
                           ease: EASE,
                           delay: 0.9 + i * 0.12,
                         }}
                         className={`h-full rounded-full ${
-                          pct === 100 ? "bg-mint-500" : "bg-brand-500"
+                          item.pct === 100 ? "bg-mint-500" : "bg-brand-500"
                         }`}
                       />
                     </div>
@@ -216,8 +200,8 @@ export function DashboardPreview() {
           <CheckCircleFilled />
         </span>
         <div>
-          <p className="text-ink-900 text-xs font-bold">Payroll approved</p>
-          <p className="text-ink-400 text-[11px]">1,842 payslips · 38 min</p>
+          <p className="text-ink-900 text-xs font-bold">{badge.title}</p>
+          <p className="text-ink-400 text-[11px]">{badge.detail}</p>
         </div>
       </motion.div>
     </div>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { openRoles, perks } from "@/data/pages";
+import { contactEmails } from "@/data/common";
 import { CtaBand } from "@/components/landing/cta-band";
 import { PageHero } from "@/components/marketing/page-hero";
 import { LinkButton } from "@/components/marketing/link-button";
@@ -82,7 +83,7 @@ export default function CareersPage() {
                     .map((role) => (
                       <li key={role.title}>
                         <a
-                          href={`mailto:careers@nexushr.example?subject=${encodeURIComponent(role.title)}`}
+                          href={`mailto:${contactEmails.careers}?subject=${encodeURIComponent(role.title)}`}
                           className="hover:bg-ink-50/70 group flex flex-col gap-2 px-6 py-5 transition-colors sm:flex-row sm:items-center sm:justify-between"
                         >
                           <div>
@@ -114,10 +115,10 @@ export default function CareersPage() {
                 here. We read every one and reply either way.
               </p>
               <a
-                href="mailto:careers@nexushr.example?subject=Open%20application"
+                href={`mailto:${contactEmails.careers}?subject=Open%20application`}
                 className="text-brand-600 hover:text-brand-700 mt-5 inline-flex text-sm font-semibold"
               >
-                careers@nexushr.example →
+                {contactEmails.careers} →
               </a>
             </div>
           </Reveal>

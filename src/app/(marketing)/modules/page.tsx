@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { modules } from "@/data/landing";
+import { moduleTagStyles } from "@/data/common";
 import { integrations, moduleGroups } from "@/data/pages";
 import { CtaBand } from "@/components/landing/cta-band";
 import { PageHero } from "@/components/marketing/page-hero";
@@ -13,14 +14,6 @@ export const metadata: Metadata = {
   description:
     "Twelve NexusHR modules across Core HR, payroll, operations, talent and analytics — turn on what you need, when you need it.",
   alternates: { canonical: "/modules" },
-};
-
-const tagStyles: Record<string, string> = {
-  Foundation: "text-brand-700 border-brand-200 bg-brand-50",
-  Finance: "text-mint-600 border-mint-400/40 bg-mint-500/10",
-  Operations: "text-sky-700 border-sky-200 bg-sky-50",
-  Talent: "text-violet-700 border-violet-200 bg-violet-50",
-  Insights: "text-amber-700 border-amber-200 bg-amber-50",
 };
 
 export default function ModulesPage() {
@@ -57,7 +50,7 @@ export default function ModulesPage() {
               >
                 <Reveal>
                   <span
-                    className={`inline-flex rounded-full border px-2.5 py-1 text-[11px] font-semibold ${tagStyles[group.tag]}`}
+                    className={`inline-flex rounded-full border px-2.5 py-1 text-[11px] font-semibold ${moduleTagStyles.light[group.tag]}`}
                   >
                     {group.tag}
                   </span>

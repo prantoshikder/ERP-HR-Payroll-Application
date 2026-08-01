@@ -3,7 +3,7 @@
 import type { ReactNode } from "react";
 import { motion, type Variants } from "motion/react";
 
-const EASE = [0.22, 1, 0.36, 1] as const;
+import { EASE } from "@/data/common";
 
 export const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },

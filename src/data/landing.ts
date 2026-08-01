@@ -346,3 +346,73 @@ export const logos = [
   "Anchor Group",
   "Skyward",
 ];
+
+/** Tailwind classes per feature accent, applied to the icon tile in `Features`. */
+export const featureAccentStyles: Record<Feature["accent"], string> = {
+  brand: "bg-brand-50 text-brand-600 group-hover:bg-brand-600 group-hover:text-white",
+  mint: "bg-mint-500/10 text-mint-600 group-hover:bg-mint-500 group-hover:text-white",
+  sky: "bg-sky-50 text-sky-600 group-hover:bg-sky-600 group-hover:text-white",
+  violet: "bg-violet-50 text-violet-600 group-hover:bg-violet-600 group-hover:text-white",
+  amber: "bg-amber-50 text-amber-600 group-hover:bg-amber-500 group-hover:text-white",
+  rose: "bg-rose-50 text-rose-600 group-hover:bg-rose-600 group-hover:text-white",
+};
+
+/** Platform-wide capabilities shown under the module grid. `key` picks the icon. */
+export const platformCapabilities: { key: string; label: string }[] = [
+  { key: "api", label: "Open REST API & webhooks" },
+  { key: "sync", label: "Accounting & bank sync" },
+  { key: "mobile", label: "iOS & Android self-service" },
+  { key: "security", label: "SOC 2 Type II · RBAC · SSO" },
+];
+
+/* ------------------------------------------------- hero dashboard mock-up */
+
+export type DashboardStat = {
+  key: string;
+  label: string;
+  value: string;
+  delta: string;
+};
+
+export type PayrollRow = {
+  name: string;
+  role: string;
+  net: string;
+  status: "Paid" | "Review";
+};
+
+/** Everything rendered inside the fake product screenshot in the hero. */
+export const dashboardPreview = {
+  url: "app.nexushr.com/payroll/august-2026",
+
+  /** `key` picks the icon in `DashboardPreview`. */
+  stats: [
+    { key: "cost", label: "August payroll", value: "$1,284,900", delta: "+4.2%" },
+    { key: "headcount", label: "Employees paid", value: "1,842", delta: "+38" },
+  ] as DashboardStat[],
+
+  progress: [
+    { label: "Timesheets locked", pct: 100 },
+    { label: "Tax computed", pct: 100 },
+    { label: "Approvals", pct: 74 },
+  ],
+
+  bars: [
+    { month: "Feb", value: 52 },
+    { month: "Mar", value: 61 },
+    { month: "Apr", value: 48 },
+    { month: "May", value: 72 },
+    { month: "Jun", value: 66 },
+    { month: "Jul", value: 88 },
+    { month: "Aug", value: 79 },
+  ],
+
+  payrollRows: [
+    { name: "Ayesha Karim", role: "Senior Engineer", net: "$4,820", status: "Paid" },
+    { name: "Rahul Sharma", role: "Account Manager", net: "$3,140", status: "Paid" },
+    { name: "Nadia Islam", role: "HR Specialist", net: "$2,760", status: "Review" },
+    { name: "Tanvir Ahmed", role: "Ops Lead", net: "$3,590", status: "Paid" },
+  ] as PayrollRow[],
+
+  badge: { title: "Payroll approved", detail: "1,842 payslips · 38 min" },
+};

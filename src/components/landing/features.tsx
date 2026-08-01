@@ -11,7 +11,7 @@ import {
   SolutionOutlined,
 } from "@ant-design/icons";
 
-import { features, type Feature } from "@/data/landing";
+import { features, featureAccentStyles } from "@/data/landing";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { RevealGroup, fadeUp } from "@/components/ui/reveal";
 
@@ -22,15 +22,6 @@ const icons: Record<string, ReactNode> = {
   recruit: <SolutionOutlined />,
   performance: <LineChartOutlined />,
   compliance: <AuditOutlined />,
-};
-
-const accents: Record<Feature["accent"], string> = {
-  brand: "bg-brand-50 text-brand-600 group-hover:bg-brand-600 group-hover:text-white",
-  mint: "bg-mint-500/10 text-mint-600 group-hover:bg-mint-500 group-hover:text-white",
-  sky: "bg-sky-50 text-sky-600 group-hover:bg-sky-600 group-hover:text-white",
-  violet: "bg-violet-50 text-violet-600 group-hover:bg-violet-600 group-hover:text-white",
-  amber: "bg-amber-50 text-amber-600 group-hover:bg-amber-500 group-hover:text-white",
-  rose: "bg-rose-50 text-rose-600 group-hover:bg-rose-600 group-hover:text-white",
 };
 
 export function Features() {
@@ -59,7 +50,7 @@ export function Features() {
               className="group border-ink-200/70 hover:border-brand-200 hover:shadow-lift relative overflow-hidden rounded-2xl border bg-white p-6 transition-all duration-300 hover:-translate-y-1"
             >
               <div
-                className={`grid h-11 w-11 place-items-center rounded-xl text-lg transition-colors duration-300 ${accents[feature.accent]}`}
+                className={`grid h-11 w-11 place-items-center rounded-xl text-lg transition-colors duration-300 ${featureAccentStyles[feature.accent]}`}
               >
                 {icons[feature.key]}
               </div>

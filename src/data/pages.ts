@@ -1,8 +1,10 @@
 /**
  * Content for the standalone marketing pages. Landing-page content lives in
- * `landing.ts`; anything a single sub-page owns is defined here so the page
- * components stay layout-only.
+ * `landing.ts`, values shared by both in `common.ts`; anything a single
+ * sub-page owns is defined here so the page components stay layout-only.
  */
+
+import { contactEmails } from "./common";
 
 /* ------------------------------------------------------------------ features */
 
@@ -416,6 +418,15 @@ export const practiceGroups: PracticeGroup[] = [
 
 export type Certification = { name: string; detail: string };
 
+/** Commitments quoted in the vulnerability-disclosure band on /security. */
+export const disclosureFacts = [
+  { label: "First response", value: "Within 72 hours" },
+  {
+    label: "Customer notification",
+    value: "Within 24 hours of a confirmed incident",
+  },
+];
+
 export const certifications: Certification[] = [
   { name: "SOC 2 Type II", detail: "Audited annually across security, availability and confidentiality." },
   { name: "ISO 27001", detail: "Information security management system certified and surveilled." },
@@ -436,19 +447,19 @@ export const contactChannels: ContactChannel[] = [
   {
     title: "Talk to sales",
     description: "Pricing, migration scoping and a walkthrough against your own payroll rules.",
-    email: "sales@nexushr.example",
+    email: contactEmails.sales,
     response: "Replies within one business day",
   },
   {
     title: "Customer support",
     description: "For existing customers with a question about a run, a policy or an import.",
-    email: "support@nexushr.example",
+    email: contactEmails.support,
     response: "Priority queue for Growth and Enterprise",
   },
   {
     title: "Security & compliance",
     description: "Vendor assessments, DPAs, sub-processor lists and disclosure reports.",
-    email: "security@nexushr.example",
+    email: contactEmails.security,
     response: "First response within 72 hours",
   },
 ];
@@ -537,7 +548,7 @@ export const privacySections: LegalSection[] = [
     body: [
       "Depending on where you live, you may have the right to access, correct, delete, port or restrict the processing of your personal data, and to object to processing based on legitimate interests.",
       "If your data sits in an employer's NexusHR workspace, ask your employer first — we will refer your request to them as the controller.",
-      "To exercise a right in relation to data we control, email privacy@nexushr.example. We respond within 30 days.",
+      `To exercise a right in relation to data we control, email ${contactEmails.privacy}. We respond within 30 days.`,
     ],
   },
   {
@@ -641,7 +652,7 @@ export const termsSections: LegalSection[] = [
     id: "contact",
     heading: "Contact",
     body: [
-      "Questions about these terms can be sent to legal@nexushr.example, or through the contact page.",
+      `Questions about these terms can be sent to ${contactEmails.legal}, or through the contact page.`,
     ],
   },
 ];

@@ -5,19 +5,10 @@ import { Button } from "antd";
 import { motion } from "motion/react";
 
 import { RouteButton } from "@/components/ui/route-button";
+import { fadeUp, staggerParent } from "@/components/ui/reveal";
 import { DashboardPreview } from "./dashboard-preview";
 
-const EASE = [0.22, 1, 0.36, 1] as const;
-
-const container = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.09, delayChildren: 0.05 } },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 22 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.65, ease: EASE } },
-};
+const container = staggerParent(0.09, 0.05);
 
 export function Hero() {
   return (
@@ -39,7 +30,7 @@ export function Hero() {
           animate="show"
           className="mx-auto max-w-3xl text-center"
         >
-          <motion.div variants={item}>
+          <motion.div variants={fadeUp}>
             <span className="border-ink-200 text-ink-600 shadow-soft inline-flex items-center gap-2 rounded-full border bg-white/80 px-3.5 py-1.5 text-xs font-medium backdrop-blur">
               <span className="bg-mint-500 relative flex h-1.5 w-1.5 rounded-full">
                 <span className="bg-mint-500 absolute inline-flex h-full w-full animate-ping rounded-full opacity-75" />
@@ -49,7 +40,7 @@ export function Hero() {
           </motion.div>
 
           <motion.h1
-            variants={item}
+            variants={fadeUp}
             className="font-display text-ink-900 mt-6 text-4xl leading-[1.08] font-extrabold tracking-tight text-balance sm:text-5xl md:text-6xl"
           >
             Close payroll in minutes,{" "}
@@ -57,7 +48,7 @@ export function Hero() {
           </motion.h1>
 
           <motion.p
-            variants={item}
+            variants={fadeUp}
             className="text-ink-500 mx-auto mt-6 max-w-2xl text-base leading-relaxed text-pretty sm:text-lg"
           >
             NexusHR is the ERP that connects people, attendance and money. Hire,
@@ -66,7 +57,7 @@ export function Hero() {
           </motion.p>
 
           <motion.div
-            variants={item}
+            variants={fadeUp}
             className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row"
           >
             <RouteButton
@@ -87,7 +78,7 @@ export function Hero() {
             </Button>
           </motion.div>
 
-          <motion.p variants={item} className="text-ink-400 mt-5 text-xs">
+          <motion.p variants={fadeUp} className="text-ink-400 mt-5 text-xs">
             No credit card required · Free migration from your current system
           </motion.p>
         </motion.div>

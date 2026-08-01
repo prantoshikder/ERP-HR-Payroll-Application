@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
-import { certifications, practiceGroups } from "@/data/pages";
+import { certifications, disclosureFacts, practiceGroups } from "@/data/pages";
+import { contactEmails } from "@/data/common";
 import { CtaBand } from "@/components/landing/cta-band";
 import { PageHero } from "@/components/marketing/page-hero";
 import { LinkButton } from "@/components/marketing/link-button";
@@ -110,7 +111,7 @@ export default function SecurityPage() {
                   <p className="text-ink-300 mt-4 text-sm leading-relaxed">
                     If you believe you have found a security issue, email{" "}
                     <span className="font-semibold text-white">
-                      security@nexushr.example
+                      {contactEmails.security}
                     </span>{" "}
                     with enough detail to reproduce it. We acknowledge within 72
                     hours, keep you updated while we fix it, and credit reporters
@@ -120,20 +121,17 @@ export default function SecurityPage() {
                 </div>
 
                 <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
-                  <div className="rounded-xl border border-white/10 bg-white/[0.04] p-4">
-                    <p className="text-brand-300 text-xs font-semibold">
-                      First response
-                    </p>
-                    <p className="mt-1 text-sm text-white">Within 72 hours</p>
-                  </div>
-                  <div className="rounded-xl border border-white/10 bg-white/[0.04] p-4">
-                    <p className="text-brand-300 text-xs font-semibold">
-                      Customer notification
-                    </p>
-                    <p className="mt-1 text-sm text-white">
-                      Within 24 hours of a confirmed incident
-                    </p>
-                  </div>
+                  {disclosureFacts.map((fact) => (
+                    <div
+                      key={fact.label}
+                      className="rounded-xl border border-white/10 bg-white/[0.04] p-4"
+                    >
+                      <p className="text-brand-300 text-xs font-semibold">
+                        {fact.label}
+                      </p>
+                      <p className="mt-1 text-sm text-white">{fact.value}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>

@@ -51,7 +51,8 @@ src/
       reveal.tsx            scroll-reveal motion primitives
       section-heading.tsx   shared section header
   data/
-    landing.ts              landing copy, nav and footer links
+    common.ts               values used in 2+ places (easing, emails, tag styles)
+    landing.ts              landing copy, nav and footer links, dashboard mock-up
     pages.ts                copy owned by individual sub-pages
   lib/
     antd-theme.ts           single source of truth for antd tokens
@@ -61,6 +62,20 @@ src/
 Every route is statically prerendered. Adding a page means creating it under
 `src/app/(marketing)/` and adding its path to `sitePaths` in `src/lib/site.ts`
 so it appears in `sitemap.xml`.
+
+## Where content lives
+
+Components hold layout and one-off prose (section titles, paragraphs); every
+list, table, map and repeated literal lives in `src/data/`:
+
+- `common.ts` — used by more than one component or page: the motion easing
+  curve, contact mailboxes, module tag badge styles (dark + light).
+- `landing.ts` — landing sections, nav/footer links, and the hero's mock
+  dashboard (stats, chart bars, payroll rows, badge).
+- `pages.ts` — content owned by a single sub-page.
+
+Icon maps stay in their component (they hold JSX); data files key into them by
+`key`, as in `features.tsx` and `modules.tsx`.
 
 ## Styling conventions
 

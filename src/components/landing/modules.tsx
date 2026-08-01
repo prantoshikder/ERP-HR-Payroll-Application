@@ -3,24 +3,19 @@
 import { motion } from "motion/react";
 import { ApiOutlined, CloudSyncOutlined, MobileOutlined, SafetyCertificateOutlined } from "@ant-design/icons";
 
-import { modules } from "@/data/landing";
+import type { ReactNode } from "react";
+
+import { modules, platformCapabilities } from "@/data/landing";
+import { moduleTagStyles } from "@/data/common";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal, RevealGroup, fadeUp } from "@/components/ui/reveal";
 
-const tagStyles: Record<string, string> = {
-  Foundation: "text-brand-300 border-brand-400/25 bg-brand-400/10",
-  Finance: "text-mint-400 border-mint-400/25 bg-mint-400/10",
-  Operations: "text-sky-300 border-sky-400/25 bg-sky-400/10",
-  Talent: "text-violet-300 border-violet-400/25 bg-violet-400/10",
-  Insights: "text-amber-300 border-amber-400/25 bg-amber-400/10",
+const capabilityIcons: Record<string, ReactNode> = {
+  api: <ApiOutlined />,
+  sync: <CloudSyncOutlined />,
+  mobile: <MobileOutlined />,
+  security: <SafetyCertificateOutlined />,
 };
-
-const capabilities = [
-  { icon: <ApiOutlined />, label: "Open REST API & webhooks" },
-  { icon: <CloudSyncOutlined />, label: "Accounting & bank sync" },
-  { icon: <MobileOutlined />, label: "iOS & Android self-service" },
-  { icon: <SafetyCertificateOutlined />, label: "SOC 2 Type II · RBAC · SSO" },
-];
 
 export function Modules() {
   return (
@@ -59,7 +54,7 @@ export function Modules() {
                   {mod.name}
                 </h3>
                 <span
-                  className={`shrink-0 rounded-full border px-2 py-0.5 text-[10px] font-semibold ${tagStyles[mod.tag]}`}
+                  className={`shrink-0 rounded-full border px-2 py-0.5 text-[10px] font-semibold ${moduleTagStyles.dark[mod.tag]}`}
                 >
                   {mod.tag}
                 </span>
@@ -71,10 +66,10 @@ export function Modules() {
 
         <Reveal delay={0.1}>
           <div className="mt-12 grid gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:grid-cols-2 lg:grid-cols-4">
-            {capabilities.map((cap) => (
-              <div key={cap.label} className="flex items-center gap-3">
+            {platformCapabilities.map((cap) => (
+              <div key={cap.key} className="flex items-center gap-3">
                 <span className="text-brand-300 grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-white/5 text-base">
-                  {cap.icon}
+                  {capabilityIcons[cap.key]}
                 </span>
                 <span className="text-ink-300 text-sm font-medium">{cap.label}</span>
               </div>
