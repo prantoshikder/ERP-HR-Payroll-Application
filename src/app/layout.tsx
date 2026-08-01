@@ -78,6 +78,11 @@ export default function RootLayout({
         suppressHydrationWarning
         className="text-ink-900 flex min-h-full flex-col bg-white"
       >
+        {/* Scroll reveals start hidden and are unhidden by an observer.
+            Without JS they would never appear, so show them all. */}
+        <noscript>
+          <style>{`.reveal,.reveal-item{opacity:1!important}`}</style>
+        </noscript>
         <AppProviders>{children}</AppProviders>
       </body>
     </html>

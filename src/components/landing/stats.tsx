@@ -1,9 +1,8 @@
 "use client";
 
-import { motion } from "motion/react";
 
 import { stats } from "@/data/landing";
-import { RevealGroup, fadeUp } from "@/components/ui/reveal";
+import { RevealGroup } from "@/components/ui/reveal";
 
 export function Stats() {
   return (
@@ -24,7 +23,7 @@ export function Stats() {
             stagger={0.1}
           >
             {stats.map((stat) => (
-              <motion.div key={stat.label} variants={fadeUp}>
+              <div key={stat.label}>
                 <p className="font-display text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
                   {stat.value}
                 </p>
@@ -32,7 +31,7 @@ export function Stats() {
                   {stat.label}
                 </p>
                 <p className="text-brand-200/70 mt-1 text-xs">{stat.sub}</p>
-              </motion.div>
+              </div>
             ))}
           </RevealGroup>
         </div>

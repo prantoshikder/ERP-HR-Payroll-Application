@@ -1,19 +1,11 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
-
 import { steps } from "@/data/landing";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { RevealGroup, fadeUp } from "@/components/ui/reveal";
+import { RevealGroup, useInView } from "@/components/ui/reveal";
 
 export function HowItWorks() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start 75%", "end 60%"],
-  });
-  const lineScale = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const { ref, inView } = useInView<HTMLDivElement>({ threshold: 0.15 });
 
   return (
     <section id="how-it-works" className="bg-ink-50/60 py-20 sm:py-28">
@@ -27,19 +19,16 @@ export function HowItWorks() {
         <div ref={ref} className="relative mx-auto mt-14 max-w-3xl">
           {/* progress rail */}
           <div className="bg-ink-200 absolute top-2 bottom-2 left-[27px] hidden w-px sm:block">
-            <motion.div
-              style={{ scaleY: lineScale, originY: 0 }}
-              className="from-brand-600 to-mint-500 h-full w-px bg-gradient-to-b"
+            <div
+              className={`from-brand-600 to-mint-500 h-full w-px bg-linear-to-b ${
+                inView ? "grow-down" : "scale-y-0"
+              }`}
             />
           </div>
 
           <RevealGroup className="space-y-8" stagger={0.12}>
             {steps.map((step) => (
-              <motion.div
-                key={step.step}
-                variants={fadeUp}
-                className="relative flex gap-5 sm:gap-7"
-              >
+              <div key={step.step} className="relative flex gap-5 sm:gap-7">
                 <div className="relative z-10 shrink-0">
                   <div className="font-display border-ink-200 text-brand-700 shadow-soft grid h-14 w-14 place-items-center rounded-2xl border bg-white text-sm font-extrabold">
                     {step.step}
@@ -54,7 +43,7 @@ export function HowItWorks() {
                     {step.description}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </RevealGroup>
         </div>

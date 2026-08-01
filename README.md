@@ -89,15 +89,39 @@ Ant Design 6 emits its CSS **unlayered**, while Tailwind 4 puts everything into
   `.faq-collapse` for the pattern.
 
 Custom Tailwind utilities defined in `globals.css`: `shell`, `text-gradient`,
-`grid-lines`, `dot-grid`, `mask-fade-b`, `mask-fade-x`.
+`grid-lines`, `dot-grid`, `mask-fade-b`, `mask-fade-x`, plus the entrance
+utilities `enter`, `enter-x`, `grow-x`, `grow-y`, `grow-down`.
 
 Color scales: `brand-*` (indigo), `mint-*` (green), `ink-*` (slate).
 
-## Motion
+## Motion & first paint
 
-`src/components/ui/reveal.tsx` exports `Reveal`, `RevealGroup` and the `fadeUp` /
-`fadeIn` variants. Sections use `whileInView` with `once: true`. Global
-`prefers-reduced-motion` handling lives in `globals.css`.
+There is no animation library. Everything animates with CSS keyframes, because
+a JS-driven entrance has to render `opacity: 0` into the SSR HTML — which keeps
+the page blank until the bundle hydrates.
+
+- **Above the fold** (navbar, hero, dashboard mock-up): the `enter` /
+  `enter-x` / `grow-*` utilities, staggered with the `--enter-delay` variable.
+  These paint on the first frame, before any JS runs.
+- **Below the fold**: `Reveal` / `RevealGroup` from
+  `src/components/ui/reveal.tsx` add an `is-in` class through an
+  IntersectionObserver; the animation itself is still CSS. `useInView` is
+  exported for one-off cases (see the progress rail in `how-it-works.tsx`).
+- `prefers-reduced-motion` disables all of it in `globals.css`, and a
+  `<noscript>` rule in the root layout unhides reveals when JS never arrives.
+
+## Load performance
+
+- Every route is statically prerendered; nothing renders at request time.
+- `loading.tsx` in the marketing group shows a skeleton while a segment streams.
+- `optimizePackageImports` (`next.config.ts`) keeps antd barrel imports from
+  pulling the whole library into a page.
+- antd's `<App>` provider is intentionally not mounted — see
+  `app-providers.tsx`.
+
+Homepage first-load JS is ~318 KB gzipped, nearly all of it React + antd.
+Check it after dependency changes with `yarn build && yarn start`, then measure
+the `<script>` chunks the HTML references.
 
 ## SEO & metadata
 

@@ -1,14 +1,19 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import { ArrowRightOutlined, PlayCircleOutlined } from "@ant-design/icons";
 import { Button } from "antd";
-import { motion } from "motion/react";
 
 import { RouteButton } from "@/components/ui/route-button";
-import { fadeUp, staggerParent } from "@/components/ui/reveal";
 import { DashboardPreview } from "./dashboard-preview";
 
-const container = staggerParent(0.09, 0.05);
+/**
+ * Entrances here are CSS, not motion: this is the LCP block, and a JS-driven
+ * entrance would ship `opacity: 0` in the SSR HTML and hold the first paint
+ * until hydration. `delay()` staggers the same way the variants used to.
+ */
+const delay = (seconds: number) =>
+  ({ "--enter-delay": `${seconds}s` }) as CSSProperties;
 
 export function Hero() {
   return (
@@ -24,41 +29,36 @@ export function Hero() {
       </div>
 
       <div className="shell">
-        <motion.div
-          variants={container}
-          initial="hidden"
-          animate="show"
-          className="mx-auto max-w-3xl text-center"
-        >
-          <motion.div variants={fadeUp}>
+        <div className="mx-auto max-w-3xl text-center">
+          <div className="enter" style={delay(0.05)}>
             <span className="border-ink-200 text-ink-600 shadow-soft inline-flex items-center gap-2 rounded-full border bg-white/80 px-3.5 py-1.5 text-xs font-medium backdrop-blur">
               <span className="bg-mint-500 relative flex h-1.5 w-1.5 rounded-full">
                 <span className="bg-mint-500 absolute inline-flex h-full w-full animate-ping rounded-full opacity-75" />
               </span>
               New — automated tax slabs for FY 2026-27
             </span>
-          </motion.div>
+          </div>
 
-          <motion.h1
-            variants={fadeUp}
-            className="font-display text-ink-900 mt-6 text-4xl leading-[1.08] font-extrabold tracking-tight text-balance sm:text-5xl md:text-6xl"
+          <h1
+            className="font-display text-ink-900 enter mt-6 text-4xl leading-[1.08] font-extrabold tracking-tight text-balance sm:text-5xl md:text-6xl"
+            style={delay(0.14)}
           >
             Close payroll in minutes,{" "}
             <span className="text-gradient">not weekends</span>
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            variants={fadeUp}
-            className="text-ink-500 mx-auto mt-6 max-w-2xl text-base leading-relaxed text-pretty sm:text-lg"
+          <p
+            className="text-ink-500 enter mx-auto mt-6 max-w-2xl text-base leading-relaxed text-pretty sm:text-lg"
+            style={delay(0.23)}
           >
             NexusHR is the ERP that connects people, attendance and money. Hire,
             onboard, track time and pay your entire workforce from one system —
             with an audit trail your finance team can trust.
-          </motion.p>
+          </p>
 
-          <motion.div
-            variants={fadeUp}
-            className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row"
+          <div
+            className="enter mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row"
+            style={delay(0.32)}
           >
             <RouteButton
               type="primary"
@@ -76,12 +76,12 @@ export function Hero() {
             >
               See how it works
             </Button>
-          </motion.div>
+          </div>
 
-          <motion.p variants={fadeUp} className="text-ink-400 mt-5 text-xs">
+          <p className="text-ink-400 enter mt-5 text-xs" style={delay(0.41)}>
             No credit card required · Free migration from your current system
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
 
         <div className="relative mx-auto mt-16 max-w-5xl sm:mt-20">
           <DashboardPreview />

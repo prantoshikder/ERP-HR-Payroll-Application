@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "motion/react";
 import { ApiOutlined, CloudSyncOutlined, MobileOutlined, SafetyCertificateOutlined } from "@ant-design/icons";
 
 import type { ReactNode } from "react";
@@ -8,7 +7,7 @@ import type { ReactNode } from "react";
 import { modules, platformCapabilities } from "@/data/landing";
 import { moduleTagStyles } from "@/data/common";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { Reveal, RevealGroup, fadeUp } from "@/components/ui/reveal";
+import { Reveal, RevealGroup } from "@/components/ui/reveal";
 
 const capabilityIcons: Record<string, ReactNode> = {
   api: <ApiOutlined />,
@@ -44,9 +43,8 @@ export function Modules() {
           stagger={0.05}
         >
           {modules.map((mod) => (
-            <motion.div
+            <div
               key={mod.name}
-              variants={fadeUp}
               className="group rounded-xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur-sm transition-colors duration-300 hover:border-white/25 hover:bg-white/[0.08]"
             >
               <div className="flex items-start justify-between gap-3">
@@ -60,7 +58,7 @@ export function Modules() {
                 </span>
               </div>
               <p className="text-ink-400 mt-1.5 text-sm">{mod.blurb}</p>
-            </motion.div>
+            </div>
           ))}
         </RevealGroup>
 

@@ -1,9 +1,8 @@
 "use client";
 
 import { StarFilled } from "@ant-design/icons";
-import { motion } from "motion/react";
 
-import { RevealGroup, fadeUp } from "@/components/ui/reveal";
+import { RevealGroup } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { testimonials } from "@/data/landing";
 
@@ -18,9 +17,8 @@ export function Testimonials() {
 
         <RevealGroup className="mt-14 grid gap-5 lg:grid-cols-3" stagger={0.09}>
           {testimonials.map((t) => (
-            <motion.figure
+            <figure
               key={t.name}
-              variants={fadeUp}
               className="border-ink-200/70 hover:shadow-lift flex h-full flex-col rounded-2xl border bg-white p-7 transition-shadow"
             >
               <div className="text-mint-500 flex gap-0.5 text-xs">
@@ -44,7 +42,7 @@ export function Testimonials() {
                   </p>
                 </div>
               </figcaption>
-            </motion.figure>
+            </figure>
           ))}
         </RevealGroup>
       </div>

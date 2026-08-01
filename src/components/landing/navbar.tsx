@@ -1,11 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Drawer } from "antd";
 import { CloseOutlined, MenuOutlined } from "@ant-design/icons";
-import { AnimatePresence, motion, useScroll, useMotionValueEvent } from "motion/react";
 
 import { navLinks } from "@/data/landing";
 import { RouteButton } from "@/components/ui/route-button";
@@ -15,11 +14,13 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-  const { scrollY } = useScroll();
 
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    setScrolled(latest > 12);
-  });
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -30,12 +31,8 @@ export function Navbar() {
 
   return (
     <>
-      <motion.header
-        initial={{ y: -80, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed inset-x-0 top-0 z-50"
-      >
+      {/* CSS entrance, so the nav is painted and clickable before hydration. */}
+      <header className="enter fixed inset-x-0 top-0 z-50">
         <div
           className={`transition-all duration-300 ${
             scrolled
@@ -93,7 +90,7 @@ export function Navbar() {
             </button>
           </nav>
         </div>
-      </motion.header>
+      </header>
 
       <Drawer
         placement="right"
@@ -101,6 +98,7 @@ export function Navbar() {
         onClose={() => setOpen(false)}
         size={300}
         closable={false}
+        destroyOnHidden
         styles={{ body: { padding: 20 } }}
       >
         <div className="flex items-center justify-between">
@@ -115,37 +113,26 @@ export function Navbar() {
           </button>
         </div>
 
-        <AnimatePresence>
-          {open ? (
-            <motion.ul
-              initial="hidden"
-              animate="show"
-              className="mt-8 space-y-1"
-              variants={{ show: { transition: { staggerChildren: 0.05 } } }}
+        <ul className="mt-8 space-y-1">
+          {navLinks.map((link, i) => (
+            <li
+              key={link.href}
+              className="enter-x"
+              style={{ "--enter-delay": `${i * 0.05}s` } as CSSProperties}
             >
-              {navLinks.map((link) => (
-                <motion.li
-                  key={link.href}
-                  variants={{
-                    hidden: { opacity: 0, x: 16 },
-                    show: { opacity: 1, x: 0 },
-                  }}
-                >
-                  <Link
-                    href={link.href}
-                    onClick={() => setOpen(false)}
-                    aria-current={pathname === link.href ? "page" : undefined}
-                    className={`hover:bg-ink-100 block rounded-xl px-3 py-3 text-base font-medium ${
-                      pathname === link.href ? "text-brand-700 bg-brand-50" : "text-ink-700"
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                </motion.li>
-              ))}
-            </motion.ul>
-          ) : null}
-        </AnimatePresence>
+              <Link
+                href={link.href}
+                onClick={() => setOpen(false)}
+                aria-current={pathname === link.href ? "page" : undefined}
+                className={`hover:bg-ink-100 block rounded-xl px-3 py-3 text-base font-medium ${
+                  pathname === link.href ? "text-brand-700 bg-brand-50" : "text-ink-700"
+                }`}
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
 
         <div className="mt-8 space-y-2">
           <RouteButton

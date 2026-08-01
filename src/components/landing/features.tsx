@@ -1,7 +1,6 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { motion } from "motion/react";
 import {
   AuditOutlined,
   CalendarOutlined,
@@ -13,7 +12,7 @@ import {
 
 import { features, featureAccentStyles } from "@/data/landing";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { RevealGroup, fadeUp } from "@/components/ui/reveal";
+import { RevealGroup } from "@/components/ui/reveal";
 
 const icons: Record<string, ReactNode> = {
   payroll: <DollarCircleOutlined />,
@@ -44,9 +43,8 @@ export function Features() {
           stagger={0.07}
         >
           {features.map((feature) => (
-            <motion.article
+            <article
               key={feature.key}
-              variants={fadeUp}
               className="group border-ink-200/70 hover:border-brand-200 hover:shadow-lift relative overflow-hidden rounded-2xl border bg-white p-6 transition-all duration-300 hover:-translate-y-1"
             >
               <div
@@ -77,7 +75,7 @@ export function Features() {
                 aria-hidden
                 className="from-brand-400/10 pointer-events-none absolute -right-16 -bottom-16 h-40 w-40 rounded-full bg-gradient-to-tl to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
               />
-            </motion.article>
+            </article>
           ))}
         </RevealGroup>
       </div>

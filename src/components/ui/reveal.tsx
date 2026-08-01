@@ -1,62 +1,97 @@
 "use client";
 
-import type { ReactNode } from "react";
-import { motion, type Variants } from "motion/react";
+import {
+  Children,
+  cloneElement,
+  isValidElement,
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+  type ReactElement,
+  type ReactNode,
+  type Ref,
+} from "react";
 
-import { EASE } from "@/data/common";
+/**
+ * Scroll entrances, done with an IntersectionObserver and CSS keyframes rather
+ * than an animation library — the same effect for a fraction of the JS a
+ * visitor has to download before the page becomes interactive.
+ */
+export function useInView<T extends HTMLElement>({
+  once = true,
+  threshold = 0.2,
+}: { once?: boolean; threshold?: number } = {}) {
+  const ref = useRef<T | null>(null);
+  const [inView, setInView] = useState(false);
 
-export const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE } },
-};
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
 
-export const fadeIn: Variants = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { duration: 0.7, ease: EASE } },
-};
+    // No observer available: unhide directly rather than hide forever.
+    if (typeof IntersectionObserver === "undefined") {
+      element.classList.add("is-in");
+      return;
+    }
 
-export const staggerParent = (stagger = 0.08, delay = 0): Variants => ({
-  hidden: {},
-  show: { transition: { staggerChildren: stagger, delayChildren: delay } },
-});
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          if (once) observer.disconnect();
+        } else if (!once) {
+          setInView(false);
+        }
+      },
+      { threshold, rootMargin: "0px 0px -8% 0px" },
+    );
+
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [once, threshold]);
+
+  return { ref, inView };
+}
+
+const enterDelay = (seconds: number) =>
+  ({ "--enter-delay": `${seconds}s` }) as CSSProperties;
 
 type RevealProps = {
   children: ReactNode;
   className?: string;
   delay?: number;
-  y?: number;
   once?: boolean;
   as?: "div" | "section" | "li" | "span";
 };
 
-/** Scroll-triggered fade-up. Runs once by default. */
+/** Fades its content up the first time it scrolls into view. */
 export function Reveal({
   children,
-  className,
+  className = "",
   delay = 0,
-  y = 24,
   once = true,
-  as = "div",
+  as: Tag = "div",
 }: RevealProps) {
-  const Tag = motion[as];
+  const { ref, inView } = useInView<HTMLElement>({ once });
 
   return (
     <Tag
-      className={className}
-      initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once, amount: 0.25 }}
-      transition={{ duration: 0.6, ease: EASE, delay }}
+      ref={ref as Ref<never>}
+      style={enterDelay(delay)}
+      className={`reveal ${inView ? "is-in" : ""} ${className}`}
     >
       {children}
     </Tag>
   );
 }
 
-/** Wraps a group whose children animate in sequence via `fadeUp`. */
+type GroupChild = ReactElement<{ className?: string; style?: CSSProperties }>;
+
+/** Reveals its direct children one after another. */
 export function RevealGroup({
   children,
-  className,
+  className = "",
   stagger = 0.08,
   delay = 0,
 }: {
@@ -65,15 +100,19 @@ export function RevealGroup({
   stagger?: number;
   delay?: number;
 }) {
+  const { ref, inView } = useInView<HTMLDivElement>();
+
   return (
-    <motion.div
-      className={className}
-      variants={staggerParent(stagger, delay)}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.2 }}
-    >
-      {children}
-    </motion.div>
+    <div ref={ref} className={`${inView ? "is-in" : ""} ${className}`}>
+      {Children.map(children, (child, i) => {
+        if (!isValidElement(child)) return child;
+        const item = child as GroupChild;
+
+        return cloneElement(item, {
+          className: `reveal-item ${item.props.className ?? ""}`,
+          style: { ...enterDelay(delay + i * stagger), ...item.props.style },
+        });
+      })}
+    </div>
   );
 }

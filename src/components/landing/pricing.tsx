@@ -2,10 +2,9 @@
 
 import { CheckOutlined } from "@ant-design/icons";
 import { Segmented } from "antd";
-import { motion } from "motion/react";
 import { useState } from "react";
 
-import { Reveal, RevealGroup, fadeUp } from "@/components/ui/reveal";
+import { Reveal, RevealGroup } from "@/components/ui/reveal";
 import { RouteButton } from "@/components/ui/route-button";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { plans } from "@/data/landing";
@@ -59,9 +58,8 @@ export function Pricing({ heading = true }: { heading?: boolean }) {
             const price = cycle === "monthly" ? plan.monthly : plan.yearly;
 
             return (
-              <motion.div
+              <div
                 key={plan.name}
-                variants={fadeUp}
                 className={`relative flex h-full flex-col rounded-2xl border p-7 transition-shadow ${
                   plan.featured
                     ? "border-brand-600 shadow-lift bg-white lg:-mt-4 lg:pt-9 lg:pb-9"
@@ -128,7 +126,7 @@ export function Pricing({ heading = true }: { heading?: boolean }) {
                 >
                   {plan.cta}
                 </RouteButton>
-              </motion.div>
+              </div>
             );
           })}
         </RevealGroup>
