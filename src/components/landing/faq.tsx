@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Collapse } from "antd";
-import { PlusOutlined } from "@ant-design/icons";
+import { HiPlus } from "react-icons/hi2";
 
 import { faqs } from "@/data/landing";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -37,7 +37,7 @@ export function Faq() {
             defaultActiveKey={["0"]}
             expandIconPlacement="end"
             expandIcon={({ isActive }) => (
-              <PlusOutlined
+              <HiPlus
                 className="text-ink-400"
                 style={{
                   transform: `rotate(${isActive ? 135 : 0}deg)`,

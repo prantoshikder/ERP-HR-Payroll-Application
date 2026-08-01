@@ -1,6 +1,6 @@
 "use client";
 
-import { StarFilled } from "@ant-design/icons";
+import { HiStar } from "react-icons/hi2";
 
 import { RevealGroup } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -23,7 +23,7 @@ export function Testimonials() {
             >
               <div className="text-mint-500 flex gap-0.5 text-xs">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <StarFilled key={i} />
+                  <HiStar key={i} />
                 ))}
               </div>
 

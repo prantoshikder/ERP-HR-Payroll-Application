@@ -4,7 +4,7 @@ import { useEffect, useState, type CSSProperties } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Drawer } from "antd";
-import { CloseOutlined, MenuOutlined } from "@ant-design/icons";
+import { HiXMark, HiBars3 } from "react-icons/hi2";
 
 import { navLinks } from "@/data/landing";
 import { RouteButton } from "@/components/ui/route-button";
@@ -86,7 +86,7 @@ export function Navbar() {
               aria-label="Open menu"
               className="border-ink-200 text-ink-700 grid h-10 w-10 place-items-center rounded-xl border bg-white lg:hidden"
             >
-              <MenuOutlined />
+              <HiBars3 />
             </button>
           </nav>
         </div>
@@ -109,7 +109,7 @@ export function Navbar() {
             aria-label="Close menu"
             className="text-ink-500 hover:text-ink-900 grid h-9 w-9 place-items-center rounded-lg"
           >
-            <CloseOutlined />
+            <HiXMark />
           </button>
         </div>
 

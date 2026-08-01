@@ -1,7 +1,7 @@
 "use client";
 
 import { Button, Input } from "antd";
-import { ArrowRightOutlined } from "@ant-design/icons";
+import { HiArrowRight } from "react-icons/hi2";
 
 import { Reveal } from "@/components/ui/reveal";
 
@@ -44,7 +44,7 @@ export function CtaBand() {
                   type="primary"
                   size="large"
                   htmlType="submit"
-                  icon={<ArrowRightOutlined />}
+                  icon={<HiArrowRight />}
                   iconPlacement="end"
                 >
                   Get started

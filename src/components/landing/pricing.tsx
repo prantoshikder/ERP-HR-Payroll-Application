@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckOutlined } from "@ant-design/icons";
+import { HiCheck } from "react-icons/hi2";
 import { Segmented } from "antd";
 import { useState } from "react";
 
@@ -110,7 +110,7 @@ export function Pricing({ heading = true }: { heading?: boolean }) {
                             : "bg-mint-500/15 text-mint-600"
                         }`}
                       >
-                        <CheckOutlined />
+                        <HiCheck />
                       </span>
                       <span className="text-ink-600">{feature}</span>
                     </li>

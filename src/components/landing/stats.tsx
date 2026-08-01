@@ -1,17 +1,16 @@
 "use client";
 
-
-import { stats } from "@/data/landing";
 import { RevealGroup } from "@/components/ui/reveal";
+import { stats } from "@/data/landing";
 
 export function Stats() {
   return (
     <section className="py-16 sm:py-20">
       <div className="shell">
-        <div className="from-brand-700 via-brand-600 to-brand-800 shadow-glow relative overflow-hidden rounded-3xl bg-gradient-to-br px-6 py-12 sm:px-12 sm:py-14">
+        <div className="from-brand-700 via-brand-600 to-brand-800 shadow-glow relative overflow-hidden rounded-3xl bg-linear-to-br px-6 py-12 sm:px-12 sm:py-14">
           <div
             aria-hidden
-            className="absolute inset-0 opacity-[0.12] [background-image:radial-gradient(white_1px,transparent_1px)] [background-size:20px_20px]"
+            className="absolute inset-0 opacity-[0.12] bg-[radial-gradient(white_1px,transparent_1px)] bg-size-[20px_20px]"
           />
           <div
             aria-hidden

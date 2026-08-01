@@ -94,6 +94,12 @@ utilities `enter`, `enter-x`, `grow-x`, `grow-y`, `grow-down`.
 
 Color scales: `brand-*` (indigo), `mint-*` (green), `ink-*` (slate).
 
+Icons come from **`react-icons/hi2`** (Heroicons v2) — `HiOutline*` for outline,
+`Hi*` for solid. They render as a bare `<svg>` sized in `em` and coloured with
+`currentColor`, so they inherit text size and colour. `@ant-design/icons` is not
+a dependency any more; antd still uses it internally for its own chrome (select
+arrows, form feedback), which is why `.anticon` rules remain in its CSS.
+
 ## Motion & first paint
 
 There is no animation library. Everything animates with CSS keyframes, because

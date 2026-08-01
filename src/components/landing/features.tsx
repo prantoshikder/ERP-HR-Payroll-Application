@@ -2,25 +2,25 @@
 
 import type { ReactNode } from "react";
 import {
-  AuditOutlined,
-  CalendarOutlined,
-  ClockCircleOutlined,
-  DollarCircleOutlined,
-  LineChartOutlined,
-  SolutionOutlined,
-} from "@ant-design/icons";
+  HiOutlineCalendarDays,
+  HiOutlineClock,
+  HiOutlineCurrencyDollar,
+  HiOutlineDocumentCheck,
+  HiOutlinePresentationChartLine,
+  HiOutlineUserPlus,
+} from "react-icons/hi2";
 
-import { features, featureAccentStyles } from "@/data/landing";
-import { SectionHeading } from "@/components/ui/section-heading";
 import { RevealGroup } from "@/components/ui/reveal";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { featureAccentStyles, features } from "@/data/landing";
 
 const icons: Record<string, ReactNode> = {
-  payroll: <DollarCircleOutlined />,
-  attendance: <ClockCircleOutlined />,
-  leave: <CalendarOutlined />,
-  recruit: <SolutionOutlined />,
-  performance: <LineChartOutlined />,
-  compliance: <AuditOutlined />,
+  payroll: <HiOutlineCurrencyDollar />,
+  attendance: <HiOutlineClock />,
+  leave: <HiOutlineCalendarDays />,
+  recruit: <HiOutlineUserPlus />,
+  performance: <HiOutlinePresentationChartLine />,
+  compliance: <HiOutlineDocumentCheck />,
 };
 
 export function Features() {
@@ -73,7 +73,7 @@ export function Features() {
 
               <span
                 aria-hidden
-                className="from-brand-400/10 pointer-events-none absolute -right-16 -bottom-16 h-40 w-40 rounded-full bg-gradient-to-tl to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                className="from-brand-400/10 pointer-events-none absolute -right-16 -bottom-16 h-40 w-40 rounded-full bg-linear-to-tl to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
               />
             </article>
           ))}

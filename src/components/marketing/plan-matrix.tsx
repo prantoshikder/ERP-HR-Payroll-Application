@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckOutlined, MinusOutlined } from "@ant-design/icons";
+import { HiCheck, HiMinus } from "react-icons/hi2";
 import { Fragment } from "react";
 
 import { Reveal } from "@/components/ui/reveal";
@@ -12,7 +12,7 @@ function Cell({ value }: { value: string | boolean }) {
   if (value === true) {
     return (
       <span className="bg-mint-500/15 text-mint-600 grid h-6 w-6 place-items-center rounded-full text-[10px]">
-        <CheckOutlined />
+        <HiCheck />
       </span>
     );
   }
@@ -20,7 +20,7 @@ function Cell({ value }: { value: string | boolean }) {
   if (value === false) {
     return (
       <span className="text-ink-300 grid h-6 w-6 place-items-center text-[10px]">
-        <MinusOutlined />
+        <HiMinus />
       </span>
     );
   }

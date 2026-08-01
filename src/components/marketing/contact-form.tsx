@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Button, Form, Input, Select } from "antd";
-import { ArrowRightOutlined, CheckCircleFilled } from "@ant-design/icons";
+import { HiArrowRight, HiCheckCircle } from "react-icons/hi2";
 
 import { companySizes, enquiryTopics } from "@/data/pages";
 
@@ -28,7 +28,7 @@ export function ContactForm() {
     return (
       <div className="border-ink-200/70 shadow-soft rounded-2xl border bg-white p-8 text-center sm:p-10">
         <span className="bg-mint-500/15 text-mint-600 mx-auto grid h-14 w-14 place-items-center rounded-full text-2xl">
-          <CheckCircleFilled />
+          <HiCheckCircle />
         </span>
         <h2 className="font-display text-ink-900 mt-6 text-xl font-bold">
           Thanks — that reached us
@@ -126,7 +126,7 @@ export function ContactForm() {
           type="primary"
           size="large"
           htmlType="submit"
-          icon={<ArrowRightOutlined />}
+          icon={<HiArrowRight />}
           iconPlacement="end"
           block
         >

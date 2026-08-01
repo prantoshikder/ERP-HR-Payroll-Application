@@ -1,7 +1,7 @@
 "use client";
 
 import type { CSSProperties } from "react";
-import { ArrowRightOutlined, PlayCircleOutlined } from "@ant-design/icons";
+import { HiArrowRight, HiOutlinePlayCircle } from "react-icons/hi2";
 import { Button } from "antd";
 
 import { RouteButton } from "@/components/ui/route-button";
@@ -64,7 +64,7 @@ export function Hero() {
               type="primary"
               size="large"
               href="/pricing"
-              icon={<ArrowRightOutlined />}
+              icon={<HiArrowRight />}
               iconPlacement="end"
             >
               Start 14-day free trial
@@ -72,7 +72,7 @@ export function Hero() {
             <Button
               size="large"
               href="#how-it-works"
-              icon={<PlayCircleOutlined />}
+              icon={<HiOutlinePlayCircle />}
             >
               See how it works
             </Button>

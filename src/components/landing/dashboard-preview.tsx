@@ -1,18 +1,18 @@
 import type { CSSProperties, ReactNode } from "react";
 import {
-  ArrowUpOutlined,
-  BankOutlined,
-  CheckCircleFilled,
-  TeamOutlined,
-} from "@ant-design/icons";
+  HiArrowUp,
+  HiOutlineBuildingLibrary,
+  HiCheckCircle,
+  HiOutlineUserGroup,
+} from "react-icons/hi2";
 
 import { dashboardPreview } from "@/data/landing";
 
 const { url, stats, progress, bars, payrollRows, badge } = dashboardPreview;
 
 const statIcons: Record<string, ReactNode> = {
-  cost: <BankOutlined />,
-  headcount: <TeamOutlined />,
+  cost: <HiOutlineBuildingLibrary />,
+  headcount: <HiOutlineUserGroup />,
 };
 
 /**
@@ -183,7 +183,7 @@ export function DashboardPreview() {
         className="ring-ink-900/5 shadow-lift enter absolute -right-3 -bottom-5 flex items-center gap-3 rounded-xl bg-white px-4 py-3 ring-1 sm:-right-6"
       >
         <span className="bg-mint-500/10 text-mint-600 grid h-9 w-9 place-items-center rounded-full text-base">
-          <CheckCircleFilled />
+          <HiCheckCircle />
         </span>
         <div>
           <p className="text-ink-900 text-xs font-bold">{badge.title}</p>
@@ -217,7 +217,7 @@ function StatCard({
           {icon}
         </span>
         <span className="text-mint-600 flex items-center gap-1 text-[11px] font-semibold">
-          <ArrowUpOutlined /> {delta}
+          <HiArrowUp /> {delta}
         </span>
       </div>
       <p className="text-ink-400 mt-3 text-[11px] font-medium">{label}</p>

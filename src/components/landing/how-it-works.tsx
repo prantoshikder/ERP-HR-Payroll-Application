@@ -1,8 +1,8 @@
 "use client";
 
-import { steps } from "@/data/landing";
-import { SectionHeading } from "@/components/ui/section-heading";
 import { RevealGroup, useInView } from "@/components/ui/reveal";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { steps } from "@/data/landing";
 
 export function HowItWorks() {
   const { ref, inView } = useInView<HTMLDivElement>({ threshold: 0.15 });
@@ -18,7 +18,7 @@ export function HowItWorks() {
 
         <div ref={ref} className="relative mx-auto mt-14 max-w-3xl">
           {/* progress rail */}
-          <div className="bg-ink-200 absolute top-2 bottom-2 left-[27px] hidden w-px sm:block">
+          <div className="bg-ink-200 absolute top-2 bottom-2 left-6.75 hidden w-px sm:block">
             <div
               className={`from-brand-600 to-mint-500 h-full w-px bg-linear-to-b ${
                 inView ? "grow-down" : "scale-y-0"

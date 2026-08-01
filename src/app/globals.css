@@ -206,6 +206,13 @@ body {
   border-bottom: 0;
 }
 
+/* react-icons render a bare <svg>; antd only centres its own `.anticon`
+   wrapper, so line the icons up inside antd controls here. */
+.ant-btn-icon svg,
+.ant-collapse-expand-icon svg {
+  display: block;
+}
+
 /* Marquee ---------------------------------------------------------- */
 @keyframes marquee-x {
   from {
