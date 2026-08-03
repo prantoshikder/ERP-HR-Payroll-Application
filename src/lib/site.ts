@@ -4,7 +4,7 @@ export const siteConfig = {
   title: "KormoPay — ERP HR & Payroll Platform",
   description:
     "Run payroll, attendance, leave, recruitment and compliance for your whole workforce from one ERP. Built for teams from 20 to 20,000.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://kormopay.vercel.app",
   author: {
     name: "Pranto Shikder",
     email: "prantoshikder24@gmail.com",

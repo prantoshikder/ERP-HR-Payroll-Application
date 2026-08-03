@@ -383,7 +383,7 @@ export type PayrollRow = {
 
 /** Everything rendered inside the fake product screenshot in the hero. */
 export const dashboardPreview = {
-  url: "app.kormopay.com/payroll/august-2026",
+  url: "kormopay.vercel.app/payroll/august-2026",
 
   /** `key` picks the icon in `DashboardPreview`. */
   stats: [
