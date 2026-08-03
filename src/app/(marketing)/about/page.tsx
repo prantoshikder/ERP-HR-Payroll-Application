@@ -12,7 +12,7 @@ import { Reveal } from "@/components/ui/reveal";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "NexusHR started inside a payroll team that was closing month-end across four spreadsheets. Our story, our values and the people building it.",
+    "KormoPay started inside a payroll team that was closing month-end across four spreadsheets. Our story, our values and the people building it.",
   alternates: { canonical: "/about" },
 };
 
@@ -27,7 +27,7 @@ export default function AboutPage() {
             <span className="text-gradient">closed a payroll cycle</span>
           </>
         }
-        description="NexusHR started as an internal tool for a 900-person manufacturing group whose payroll lived in four spreadsheets. Everything we ship still comes from that problem: get the numbers right, on time, without re-keying."
+        description="KormoPay started as an internal tool for a 900-person manufacturing group whose payroll lived in four spreadsheets. Everything we ship still comes from that problem: get the numbers right, on time, without re-keying."
         actions={
           <>
             <LinkButton href="/careers">See open roles</LinkButton>

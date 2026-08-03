@@ -179,7 +179,7 @@ export const steps: Step[] = [
     step: "02",
     title: "Configure your rules",
     description:
-      "Set pay components, tax slabs, leave policies, shift patterns and approval hierarchies once. NexusHR applies them consistently forever after.",
+      "Set pay components, tax slabs, leave policies, shift patterns and approval hierarchies once. KormoPay applies them consistently forever after.",
   },
   {
     step: "03",
@@ -262,7 +262,7 @@ export type Testimonial = {
 export const testimonials: Testimonial[] = [
   {
     quote:
-      "Payroll used to eat the last three days of every month. With NexusHR the run takes forty minutes and the variance report catches things we used to find in an audit.",
+      "Payroll used to eat the last three days of every month. With KormoPay the run takes forty minutes and the variance report catches things we used to find in an audit.",
     name: "Farhana Rahman",
     role: "Head of People",
     company: "Meridian Textiles",
@@ -292,7 +292,7 @@ export const stats: Stat[] = [
   {
     value: "2.4M+",
     label: "Payslips issued",
-    sub: "processed through NexusHR in 2025",
+    sub: "processed through KormoPay in 2025",
   },
   {
     value: "40 min",
@@ -315,7 +315,7 @@ export const faqs: Faq[] = [
     a: "Yes. Our importer accepts Excel and CSV exports from most HRMS and accounting systems, including mid-year payroll history so year-to-date tax stays correct. A migration specialist validates the first run against your previous system before you go live.",
   },
   {
-    q: "How does NexusHR handle country-specific tax and statutory rules?",
+    q: "How does KormoPay handle country-specific tax and statutory rules?",
     a: "Tax slabs, provident fund, gratuity and social security rules are configured per legal entity and versioned by effective date. When a rule changes mid-year, past runs stay exactly as they were filed while future runs pick up the new rates automatically.",
   },
   {
@@ -383,7 +383,7 @@ export type PayrollRow = {
 
 /** Everything rendered inside the fake product screenshot in the hero. */
 export const dashboardPreview = {
-  url: "app.nexushr.com/payroll/august-2026",
+  url: "app.kormopay.com/payroll/august-2026",
 
   /** `key` picks the icon in `DashboardPreview`. */
   stats: [

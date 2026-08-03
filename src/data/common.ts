@@ -10,12 +10,12 @@ export const EASE = [0.22, 1, 0.36, 1] as const;
 
 /** Mailboxes referenced from page copy, contact channels and legal text. */
 export const contactEmails = {
-  sales: "sales@nexushr.example",
-  support: "support@nexushr.example",
-  security: "security@nexushr.example",
-  careers: "careers@nexushr.example",
-  privacy: "privacy@nexushr.example",
-  legal: "legal@nexushr.example",
+  sales: "sales@kormopay.example",
+  support: "support@kormopay.example",
+  security: "security@kormopay.example",
+  careers: "careers@kormopay.example",
+  privacy: "privacy@kormopay.example",
+  legal: "legal@kormopay.example",
 } as const;
 
 /** Module category badges — the dark set on the landing section, the light set on /modules. */

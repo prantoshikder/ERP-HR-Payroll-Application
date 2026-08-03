@@ -134,7 +134,7 @@ export function ContactForm() {
         </Button>
 
         <p className="text-ink-400 mt-4 text-xs">
-          By sending this you agree to us contacting you about NexusHR. We do not
+          By sending this you agree to us contacting you about KormoPay. We do not
           share your details — see our{" "}
           <Link href="/privacy" className="text-ink-600 hover:text-brand-600 underline">
             privacy policy

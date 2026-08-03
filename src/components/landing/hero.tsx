@@ -51,7 +51,7 @@ export function Hero() {
             className="text-ink-500 enter mx-auto mt-6 max-w-2xl text-base leading-relaxed text-pretty sm:text-lg"
             style={delay(0.23)}
           >
-            NexusHR is the ERP that connects people, attendance and money. Hire,
+            KormoPay is the ERP that connects people, attendance and money. Hire,
             onboard, track time and pay your entire workforce from one system —
             with an audit trail your finance team can trust.
           </p>

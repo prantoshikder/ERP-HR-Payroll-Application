@@ -53,7 +53,7 @@ export const featureDeepDives: FeatureDeepDive[] = [
     eyebrow: "Leave & absence",
     title: "Policies that accrue, expire and encash on their own",
     description:
-      "Define the policy once — accrual frequency, probation rules, carry-forward caps, encashment — and NexusHR applies it to every employee on schedule. Balances update the moment an approval lands, and payroll reads the same numbers.",
+      "Define the policy once — accrual frequency, probation rules, carry-forward caps, encashment — and KormoPay applies it to every employee on schedule. Balances update the moment an approval lands, and payroll reads the same numbers.",
     capabilities: [
       "Monthly, quarterly and anniversary accrual schedules",
       "Carry-forward caps with automatic year-end expiry",
@@ -287,7 +287,7 @@ export const leadership: Leader[] = [
   {
     name: "Pranto Shikder",
     role: "Founder & CEO",
-    bio: "Spent six years building payroll and ERP systems before starting NexusHR. Still reviews every calculation change.",
+    bio: "Spent six years building payroll and ERP systems before starting KormoPay. Still reviews every calculation change.",
     initials: "PS",
   },
   {
@@ -341,7 +341,7 @@ export const perks: Perk[] = [
   {
     title: "Paid on time, obviously",
     description:
-      "We build payroll software. Salaries land on the 28th, and every component is visible on your own NexusHR self-service.",
+      "We build payroll software. Salaries land on the 28th, and every component is visible on your own KormoPay self-service.",
   },
   {
     title: "Health cover for the household",
@@ -390,7 +390,7 @@ export const practiceGroups: PracticeGroup[] = [
     items: [
       "Role-based permissions down to the individual pay component",
       "SSO via SAML and OIDC, with SCIM provisioning and deprovisioning",
-      "Mandatory MFA for all NexusHR staff accounts and admin consoles",
+      "Mandatory MFA for all KormoPay staff accounts and admin consoles",
       "Just-in-time, time-boxed and logged production access for support cases",
     ],
   },
@@ -494,8 +494,8 @@ export const privacySections: LegalSection[] = [
     id: "who-we-are",
     heading: "Who we are",
     body: [
-      "NexusHR provides HR and payroll software to employers. This policy explains what we do with personal data when you visit our website, evaluate the product, or use it as a customer.",
-      "When an employer uses NexusHR to run payroll, that employer is the controller of their employees' data and we act as a processor on their instructions. Our agreement with them, not this policy, governs that data.",
+      "KormoPay provides HR and payroll software to employers. This policy explains what we do with personal data when you visit our website, evaluate the product, or use it as a customer.",
+      "When an employer uses KormoPay to run payroll, that employer is the controller of their employees' data and we act as a processor on their instructions. Our agreement with them, not this policy, governs that data.",
     ],
   },
   {
@@ -547,7 +547,7 @@ export const privacySections: LegalSection[] = [
     heading: "Your rights",
     body: [
       "Depending on where you live, you may have the right to access, correct, delete, port or restrict the processing of your personal data, and to object to processing based on legitimate interests.",
-      "If your data sits in an employer's NexusHR workspace, ask your employer first — we will refer your request to them as the controller.",
+      "If your data sits in an employer's KormoPay workspace, ask your employer first — we will refer your request to them as the controller.",
       `To exercise a right in relation to data we control, email ${contactEmails.privacy}. We respond within 30 days.`,
     ],
   },
@@ -579,8 +579,8 @@ export const termsSections: LegalSection[] = [
     id: "agreement",
     heading: "The agreement",
     body: [
-      "These terms govern your use of the NexusHR website and, unless a signed order form or master services agreement says otherwise, the NexusHR service.",
-      "Where a signed agreement exists between you and NexusHR, that agreement takes precedence over these terms for the subject matter it covers.",
+      "These terms govern your use of the KormoPay website and, unless a signed order form or master services agreement says otherwise, the KormoPay service.",
+      "Where a signed agreement exists between you and KormoPay, that agreement takes precedence over these terms for the subject matter it covers.",
     ],
   },
   {
@@ -629,7 +629,7 @@ export const termsSections: LegalSection[] = [
     id: "no-advice",
     heading: "No legal or tax advice",
     body: [
-      "NexusHR provides software, not legal, tax or accounting advice. Statutory rules shipped with the product are maintained in good faith, but you remain responsible for your own filings and for confirming that configured rules match your obligations.",
+      "KormoPay provides software, not legal, tax or accounting advice. Statutory rules shipped with the product are maintained in good faith, but you remain responsible for your own filings and for confirming that configured rules match your obligations.",
     ],
   },
   {

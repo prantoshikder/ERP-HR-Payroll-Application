@@ -8,7 +8,7 @@ import { Reveal } from "@/components/ui/reveal";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Book a NexusHR demo, scope a migration or start a security review. Sales, support and security contacts, plus our Dhaka, Singapore and Dubai offices.",
+    "Book a KormoPay demo, scope a migration or start a security review. Sales, support and security contacts, plus our Dhaka, Singapore and Dubai offices.",
   alternates: { canonical: "/contact" },
 };
 
@@ -23,7 +23,7 @@ export default function ContactPage() {
             <span className="text-gradient">before you commit</span>
           </>
         }
-        description="Tell us how you pay people today and we will show you the same cycle inside NexusHR — your pay components, your tax rules, your approval chain."
+        description="Tell us how you pay people today and we will show you the same cycle inside KormoPay — your pay components, your tax rules, your approval chain."
         note="Replies within one business day · No sales sequence, just a person"
       />
 

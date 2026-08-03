@@ -11,7 +11,7 @@ import { Reveal } from "@/components/ui/reveal";
 export const metadata: Metadata = {
   title: "Features",
   description:
-    "Payroll, attendance, leave, recruitment, performance and compliance on one employee record — every capability NexusHR ships, in detail.",
+    "Payroll, attendance, leave, recruitment, performance and compliance on one employee record — every capability KormoPay ships, in detail.",
   alternates: { canonical: "/features" },
 };
 

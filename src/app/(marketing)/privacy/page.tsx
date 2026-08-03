@@ -7,7 +7,7 @@ import { LegalDoc } from "@/components/marketing/legal-doc";
 export const metadata: Metadata = {
   title: "Privacy policy",
   description:
-    "What personal data NexusHR collects, why we process it, who we share it with, how long we keep it and the rights you can exercise.",
+    "What personal data KormoPay collects, why we process it, who we share it with, how long we keep it and the rights you can exercise.",
   alternates: { canonical: "/privacy" },
 };
 

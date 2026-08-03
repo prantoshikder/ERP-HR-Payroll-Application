@@ -11,7 +11,7 @@ import { Reveal } from "@/components/ui/reveal";
 export const metadata: Metadata = {
   title: "Careers",
   description:
-    "Open roles at NexusHR across engineering, design, compliance and customer success. Remote-first, meeting-light, and yes — we pay on time.",
+    "Open roles at KormoPay across engineering, design, compliance and customer success. Remote-first, meeting-light, and yes — we pay on time.",
   alternates: { canonical: "/careers" },
 };
 

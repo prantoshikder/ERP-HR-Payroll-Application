@@ -44,7 +44,7 @@ export default function OpengraphImage() {
             </svg>
           </div>
           <div style={{ display: "flex", fontSize: 36, fontWeight: 700, color: "white" }}>
-            NexusHR
+            KormoPay
           </div>
         </div>
 

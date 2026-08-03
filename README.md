@@ -1,4 +1,4 @@
-# NexusHR — ERP HR & Payroll Application
+# KormoPay — ERP HR & Payroll Application
 
 Marketing site + application shell for an ERP HR & Payroll product.
 

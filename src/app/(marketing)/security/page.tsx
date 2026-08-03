@@ -11,7 +11,7 @@ import { Reveal } from "@/components/ui/reveal";
 export const metadata: Metadata = {
   title: "Security & compliance",
   description:
-    "How NexusHR protects payroll data: encryption, tenant isolation, role-based access, SOC 2 Type II, ISO 27001 and an immutable audit trail.",
+    "How KormoPay protects payroll data: encryption, tenant isolation, role-based access, SOC 2 Type II, ISO 27001 and an immutable audit trail.",
   alternates: { canonical: "/security" },
 };
 

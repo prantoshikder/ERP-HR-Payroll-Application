@@ -12,7 +12,7 @@ import { Reveal } from "@/components/ui/reveal";
 export const metadata: Metadata = {
   title: "Modules",
   description:
-    "Twelve NexusHR modules across Core HR, payroll, operations, talent and analytics — turn on what you need, when you need it.",
+    "Twelve KormoPay modules across Core HR, payroll, operations, talent and analytics — turn on what you need, when you need it.",
   alternates: { canonical: "/modules" },
 };
 
