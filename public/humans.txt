@@ -1,0 +1,15 @@
+/* TEAM */
+
+    Author:    Pranto Shikder
+    Contact:   prantoshikder24@gmail.com
+    Portfolio: https://prantoshikder.vercel.app
+    GitHub:    https://github.com/prantoshikder
+    From:      Dhaka, Bangladesh
+
+
+/* SITE */
+
+    Name:     KormoPay — ERP HR & Payroll Application
+    Source:   https://github.com/prantoshikder/ERP-HR-Payroll-Application
+    Licence:  MIT — attribution must be retained, see LICENSE and NOTICE
+    Built:    Next.js 16, React 19, TypeScript, Tailwind CSS 4, Ant Design 6

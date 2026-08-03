@@ -1,0 +1,33 @@
+KormoPay — ERP HR & Payroll Application
+Copyright (c) 2026 Pranto Shikder <prantoshikder24@gmail.com>
+Portfolio: https://prantoshikder.vercel.app
+GitHub:    https://github.com/prantoshikder
+
+This product includes software developed by Pranto Shikder.
+
+Licensed under the MIT License. You may use, copy, modify, merge, publish,
+distribute, sublicense and sell copies of this software, provided that the
+above copyright notice and the permission notice in LICENSE are included in
+all copies or substantial portions of the software.
+
+Retaining attribution is the only condition this licence imposes. If you fork
+this project, keep this file and LICENSE intact and add your own copyright
+line alongside the original rather than replacing it.
+
+Attribution appears in the following places. All of them are part of the
+"copyright notice" the licence requires you to retain:
+
+  LICENSE                    MIT licence and copyright line
+  NOTICE                     this file
+  README.md                  "Author" and "Attribution" sections
+  package.json               "author" field
+  src/lib/author.ts          authorship record + build-time integrity check
+  src/app/layout.tsx         Schema.org author / copyrightHolder metadata
+  src/components/landing/footer.tsx   visible credit on every page
+  public/humans.txt          humans.txt authorship record
+
+Removing the record in src/lib/author.ts will fail the production build by
+design; the error message explains how to fork correctly.
+
+Third-party dependencies are licensed by their respective authors. See the
+LICENSE files in node_modules for their terms.

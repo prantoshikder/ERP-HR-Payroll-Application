@@ -14,6 +14,8 @@ leave, recruitment, performance and compliance on one employee record.
 [![Ant Design](https://img.shields.io/badge/Ant%20Design-6-0170FE?logo=antdesign&logoColor=white)](https://ant.design)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
 
+Built by [**Pranto Shikder**](https://prantoshikder.vercel.app)
+
 </div>
 
 ---
@@ -314,8 +316,31 @@ Honest list of what a reader should not expect to find:
 
 ## Author
 
-**Pranto Shikder** — [github.com/prantoshikder](https://github.com/prantoshikder)
+**Pranto Shikder**
 
-## License
+[🌐 Portfolio](https://prantoshikder.vercel.app)
+· [GitHub](https://github.com/prantoshikder)
+· [prantoshikder24@gmail.com](mailto:prantoshikder24@gmail.com)
 
-[MIT](./LICENSE)
+## License & attribution
+
+[MIT](./LICENSE) — use it, modify it, ship it commercially. The licence asks for
+exactly one thing in return: **keep the copyright notice.**
+
+Attribution lives in `src/lib/author.ts`, is re-exported through
+`siteConfig.author`, and reaches the page through the footer credit, the
+document metadata and a Schema.org `author` node. `LICENSE`, `NOTICE`,
+`package.json` and `public/humans.txt` carry the same record.
+
+That module runs an integrity check when it loads, and every route imports it —
+so **emptying or rewriting the author record fails `yarn build`** rather than
+silently shipping an unattributed site.
+
+Forking under your own name is welcome. Do it the right way:
+
+1. Keep the original notice in `LICENSE` and `NOTICE`.
+2. Add your copyright line **alongside** it, not in place of it.
+3. Update `AUTHOR_FINGERPRINT` in `src/lib/author.ts` to match your record — the
+   build error prints the one-liner that generates it.
+
+See [NOTICE](./NOTICE) for the full list of places attribution appears.

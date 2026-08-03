@@ -64,6 +64,38 @@ export const viewport: Viewport = {
   themeColor: "#4f46e5",
 };
 
+/**
+ * Schema.org graph embedded in every page. Search engines and crawlers read the
+ * `author` / `copyrightHolder` nodes, so attribution survives even if someone
+ * restyles the footer away.
+ */
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${siteConfig.url}/#website`,
+      url: siteConfig.url,
+      name: siteConfig.name,
+      description: siteConfig.description,
+      inLanguage: "en",
+      author: { "@id": `${siteConfig.author.url}/#person` },
+      copyrightHolder: { "@id": `${siteConfig.author.url}/#person` },
+      copyrightYear: siteConfig.copyrightYear,
+      license: `${siteConfig.repository}/blob/main/LICENSE`,
+      codeRepository: siteConfig.repository,
+    },
+    {
+      "@type": "Person",
+      "@id": `${siteConfig.author.url}/#person`,
+      name: siteConfig.author.name,
+      email: siteConfig.author.email,
+      url: siteConfig.author.url,
+      sameAs: [siteConfig.author.url, siteConfig.author.github],
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -74,6 +106,15 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${jakarta.variable} h-full antialiased`}
     >
+      <head>
+        {/* Machine-readable authorship. Required by LICENSE — see src/lib/author.ts. */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <link rel="author" href="/humans.txt" />
+        <link rel="license" href={`${siteConfig.repository}/blob/main/LICENSE`} />
+      </head>
       <body
         suppressHydrationWarning
         className="text-ink-900 flex min-h-full flex-col bg-white"
